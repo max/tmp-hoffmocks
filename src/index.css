@@ -9,10 +9,15 @@ table {
 
 th,
 td {
+	@apply font-normal;
 	@apply text-left;
+}
+
+th,
+td {
+	@apply p-1;
 }
 
 td {
 	@apply border;
-	@apply p-1;
 }

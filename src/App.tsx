@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { ZapIcon } from "@primer/octicons-react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 
 import { searches } from "./searches";
 
@@ -28,12 +29,23 @@ function App() {
                 <tr>
                   <th>
                     <div className="flex justify-between">
-                      <div>results</div>
-                      <div>
-                        <button className="text-xs font-normal text-gray-500">
-                          <ZapIcon />
-                        </button>
-                      </div>
+                      <PopoverPrimitive.Root>
+                        <PopoverPrimitive.Anchor>
+                          <div className="font-bold">results</div>
+                        </PopoverPrimitive.Anchor>
+
+                        <PopoverPrimitive.Trigger>
+                          <button className="text-xs font-normal text-gray-500">
+                            <ZapIcon />
+                          </button>
+                        </PopoverPrimitive.Trigger>
+
+                        <PopoverPrimitive.Content align="start" side="top">
+                          <div className="rounded bg-white shadow">
+                            <textarea className="block w-[320px] p-1 font-mono">{`=MATCH_REGEX("FOO")`}</textarea>
+                          </div>
+                        </PopoverPrimitive.Content>
+                      </PopoverPrimitive.Root>
                     </div>
                   </th>
 
@@ -41,12 +53,23 @@ function App() {
                     result.properties.map((property) => (
                       <th className="font-mono font-normal text-gray-500">
                         <div className="flex justify-between">
-                          <div>{property.name}</div>
-                          <div>
-                            <button className="text-xs font-normal text-gray-500">
-                              <ZapIcon />
-                            </button>
-                          </div>
+                          <PopoverPrimitive.Root>
+                            <PopoverPrimitive.Anchor>
+                              <div>{property.name}</div>
+                            </PopoverPrimitive.Anchor>
+
+                            <PopoverPrimitive.Trigger>
+                              <button className="text-xs font-normal text-gray-500">
+                                <ZapIcon />
+                              </button>
+                            </PopoverPrimitive.Trigger>
+
+                            <PopoverPrimitive.Content align="start" side="top">
+                              <div className="rounded bg-white shadow">
+                                <textarea className="block w-[320px] p-1 font-mono">{`=MATCH_REGEX("FOO")`}</textarea>
+                              </div>
+                            </PopoverPrimitive.Content>
+                          </PopoverPrimitive.Root>
                         </div>
                       </th>
                     ))
