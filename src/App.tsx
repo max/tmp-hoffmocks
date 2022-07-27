@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { ZapIcon } from "@primer/octicons-react";
+import { MixerHorizontalIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 
 import { searches } from "./searches";
@@ -23,7 +23,10 @@ function App() {
         {searches.map((search, i) => (
           <div className="mb-8 rounded border p-2" key={i}>
             <h1 className="mb-1 text-sm font-bold">
-              {search.name} <span className="text-blue-500">Edit</span>
+              <span>{search.name}</span>{" "}
+              <span className="text-gray-500">
+                <Pencil1Icon className="inline" />
+              </span>
             </h1>
 
             <table>
@@ -45,17 +48,15 @@ function App() {
 
                             <PopoverPrimitive.Trigger>
                               <span className="text-xs font-normal text-gray-500">
-                                <ZapIcon />
+                                <MixerHorizontalIcon />
                               </span>
                             </PopoverPrimitive.Trigger>
 
                             <PopoverPrimitive.Content align="start" side="top">
-                              <div className="rounded bg-white shadow">
-                                <textarea
-                                  className="block w-[320px] p-1 font-mono"
-                                  defaultValue={`=MATCH_REGEX("FOO")`}
-                                />
-                              </div>
+                              <textarea
+                                className="block w-[320px] rounded border p-1 font-mono shadow-lg outline-none"
+                                defaultValue={`=MATCH_REGEX("FOO")`}
+                              />
                             </PopoverPrimitive.Content>
                           </PopoverPrimitive.Root>
                         </div>
