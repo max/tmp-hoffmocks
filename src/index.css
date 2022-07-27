@@ -22,3 +22,11 @@ td {
 td {
 	@apply border;
 }
+
+.search-field {
+	box-shadow: 0 0 0 1px #e5e7eb; /* TODO: Refactor to use Tailwind color */
+}
+
+.search-field:focus {
+	box-shadow: 0 0 0 2px #3b82f6; /* TODO: Refactor to use Tailwind color */
+}

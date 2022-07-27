@@ -14,14 +14,14 @@ function App() {
       <div className="w-3/4">
         <div className="mb-8">
           <input
-            className="block w-full rounded border p-2"
+            className="search-field block w-full rounded p-2 outline-none"
             placeholder="New Search..."
             type="text"
           />
         </div>
 
         {searches.map((search, i) => (
-          <div className="mb-8 rounded border p-2" key={i}>
+          <div className="mb-8 rounded border p-4 shadow-sm" key={i}>
             <h1 className="mb-1 text-sm font-bold">
               <span>{search.name}</span>{" "}
               <span className="text-gray-500">
@@ -37,7 +37,7 @@ function App() {
                   {search.results.map((result, j) =>
                     result.properties.map((property, k) => (
                       <th
-                        className="font-mono font-normal text-gray-500"
+                        className="font-mono text-xs font-normal text-gray-500"
                         key={j + k}
                       >
                         <div className="flex justify-between">
@@ -54,7 +54,7 @@ function App() {
 
                             <PopoverPrimitive.Content align="start" side="top">
                               <textarea
-                                className="block w-[320px] rounded border p-1 font-mono shadow-lg outline-none"
+                                className="block w-[320px] rounded border-2 border-blue-500 p-1 font-mono shadow-lg outline-none"
                                 defaultValue={`=MATCH_REGEX("FOO")`}
                               />
                             </PopoverPrimitive.Content>
