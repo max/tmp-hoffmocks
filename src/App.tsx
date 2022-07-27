@@ -20,38 +20,23 @@ function App() {
           />
         </div>
 
-        {searches.map((search) => (
-          <div className="mb-8 rounded border p-2">
-            <h1 className="mb-1 text-sm font-bold">{search.name}</h1>
+        {searches.map((search, i) => (
+          <div className="mb-8 rounded border p-2" key={i}>
+            <h1 className="mb-1 text-sm font-bold">
+              {search.name} <span className="text-blue-500">Edit</span>
+            </h1>
 
             <table>
               <thead>
                 <tr>
-                  <th>
-                    <div className="flex justify-between">
-                      <PopoverPrimitive.Root>
-                        <PopoverPrimitive.Anchor>
-                          <div className="font-bold">results</div>
-                        </PopoverPrimitive.Anchor>
+                  <th></th>
 
-                        <PopoverPrimitive.Trigger>
-                          <button className="text-xs font-normal text-gray-500">
-                            <ZapIcon />
-                          </button>
-                        </PopoverPrimitive.Trigger>
-
-                        <PopoverPrimitive.Content align="start" side="top">
-                          <div className="rounded bg-white shadow">
-                            <textarea className="block w-[320px] p-1 font-mono">{`=MATCH_REGEX("FOO")`}</textarea>
-                          </div>
-                        </PopoverPrimitive.Content>
-                      </PopoverPrimitive.Root>
-                    </div>
-                  </th>
-
-                  {search.results.map((result) =>
-                    result.properties.map((property) => (
-                      <th className="font-mono font-normal text-gray-500">
+                  {search.results.map((result, j) =>
+                    result.properties.map((property, k) => (
+                      <th
+                        className="font-mono font-normal text-gray-500"
+                        key={j + k}
+                      >
                         <div className="flex justify-between">
                           <PopoverPrimitive.Root>
                             <PopoverPrimitive.Anchor>
@@ -59,14 +44,17 @@ function App() {
                             </PopoverPrimitive.Anchor>
 
                             <PopoverPrimitive.Trigger>
-                              <button className="text-xs font-normal text-gray-500">
+                              <span className="text-xs font-normal text-gray-500">
                                 <ZapIcon />
-                              </button>
+                              </span>
                             </PopoverPrimitive.Trigger>
 
                             <PopoverPrimitive.Content align="start" side="top">
                               <div className="rounded bg-white shadow">
-                                <textarea className="block w-[320px] p-1 font-mono">{`=MATCH_REGEX("FOO")`}</textarea>
+                                <textarea
+                                  className="block w-[320px] p-1 font-mono"
+                                  defaultValue={`=MATCH_REGEX("FOO")`}
+                                />
                               </div>
                             </PopoverPrimitive.Content>
                           </PopoverPrimitive.Root>
@@ -77,14 +65,14 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {search.results.map((result) => (
-                  <tr>
+                {search.results.map((result, j) => (
+                  <tr key={j}>
                     <td>
                       <mark className="bg-yellow-100">{result.match}</mark>
                     </td>
 
-                    {result.properties.map((property) => (
-                      <td className="font-mono text-gray-500">
+                    {result.properties.map((property, k) => (
+                      <td className="font-mono text-gray-500" key={k}>
                         {property.value}
                       </td>
                     ))}
