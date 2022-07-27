@@ -1,6 +1,8 @@
 import { PropsWithChildren } from "react";
 import { ZapIcon } from "@primer/octicons-react";
 
+import { searches } from "./searches";
+
 const Stage = ({ children }: PropsWithChildren) => (
   <div className="grid h-screen w-screen place-items-center">{children}</div>
 );
@@ -17,153 +19,58 @@ function App() {
           />
         </div>
 
-        <div className="mb-8 rounded border p-2">
-          <h1 className="mb-1 text-sm font-bold">Search 3 (no properties)</h1>
+        {searches.map((search) => (
+          <div className="mb-8 rounded border p-2">
+            <h1 className="mb-1 text-sm font-bold">{search.name}</h1>
 
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <div className="flex justify-between">
-                    <div>results</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <div className="flex justify-between">
+                      <div>results</div>
+                      <div>
+                        <button className="text-xs font-normal text-gray-500">
+                          <ZapIcon />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">example</mark>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">other example</mark>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">the last example</mark>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">the first example</mark>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">no example</mark>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                  </th>
 
-        <div className="mb-8 rounded border p-2">
-          <h1 className="mb-1 text-sm font-bold">Search 2</h1>
+                  {search.results.map((result) =>
+                    result.properties.map((property) => (
+                      <th className="font-mono font-normal text-gray-500">
+                        <div className="flex justify-between">
+                          <div>{property.name}</div>
+                          <div>
+                            <button className="text-xs font-normal text-gray-500">
+                              <ZapIcon />
+                            </button>
+                          </div>
+                        </div>
+                      </th>
+                    ))
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {search.results.map((result) => (
+                  <tr>
+                    <td>
+                      <mark className="bg-yellow-100">{result.match}</mark>
+                    </td>
 
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <div className="flex justify-between">
-                    <div>results</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-                <th className="font-mono font-normal text-gray-500">
-                  <div className="flex justify-between">
-                    <div>propertyA</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-                <th className="font-mono font-normal text-gray-500">
-                  <div className="flex justify-between">
-                    <div>propertyB</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">example</mark>
-                </td>
-                <td className="font-mono text-gray-500">0</td>
-                <td className="font-mono text-gray-500">2</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="rounded border p-2">
-          <h1 className="mb-1 text-sm font-bold">Search 1</h1>
-
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <div className="flex justify-between">
-                    <div>results</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-                <th className="font-mono font-normal text-gray-500">
-                  <div className="flex justify-between">
-                    <div>propertyA</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-                <th className="font-mono font-normal text-gray-500">
-                  <div className="flex justify-between">
-                    <div>propertyB</div>
-                    <div>
-                      <button className="text-xs font-normal text-gray-500">
-                        <ZapIcon />
-                      </button>
-                    </div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <mark className="bg-yellow-100">example</mark>
-                </td>
-                <td className="font-mono text-gray-500">0</td>
-                <td className="font-mono text-gray-500">2</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    {result.properties.map((property) => (
+                      <td className="font-mono text-gray-500">
+                        {property.value}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
       </div>
     </Stage>
   );
