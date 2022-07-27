@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+table {
+	@apply text-sm;
+	@apply w-full;
+}
+
+th,
+td {
+	@apply text-left;
+}
+
+td {
+	@apply border;
+	@apply p-1;
+}

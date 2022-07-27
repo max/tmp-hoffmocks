@@ -295,6 +295,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@primer/octicons-react@^17.3.0":
+  version "17.3.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-17.3.0.tgz#a9b868db9520e48114fd402e56600e99bcb7e8b7"
+  integrity sha512-72K4SeDj3WmehiQqVeOS+icvcO5+JHXK12ee3AqbZGqNqgCKdU4zJRKeC7EGMV4lQhoJXbj8OEdppBLa3qFDhw==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
