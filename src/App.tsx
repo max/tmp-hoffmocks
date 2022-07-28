@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { MixerHorizontalIcon, Pencil1Icon } from "@radix-ui/react-icons";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
+import * as Popover from "@radix-ui/react-popover";
 
 import { searches } from "./searches";
 
@@ -41,24 +41,51 @@ function App() {
                         key={j + k}
                       >
                         <div className="flex justify-between">
-                          <PopoverPrimitive.Root>
-                            <PopoverPrimitive.Anchor>
-                              <div>{property.name}</div>
-                            </PopoverPrimitive.Anchor>
+                          <Popover.Root>
+                            <Popover.Anchor>
+                              <div>
+                                <input type="checkbox" defaultChecked={true} />{" "}
+                                {property.name}
+                              </div>
+                            </Popover.Anchor>
 
-                            <PopoverPrimitive.Trigger>
+                            <Popover.Trigger>
                               <span className="text-xs font-normal text-gray-500">
                                 <MixerHorizontalIcon />
                               </span>
-                            </PopoverPrimitive.Trigger>
+                            </Popover.Trigger>
 
-                            <PopoverPrimitive.Content align="start" side="top">
-                              <textarea
-                                className="block w-[320px] rounded border-2 border-blue-500 p-1 font-mono shadow-lg outline-none"
-                                defaultValue={`=MATCH_REGEX("FOO")`}
-                              />
-                            </PopoverPrimitive.Content>
-                          </PopoverPrimitive.Root>
+                            <Popover.Content align="start" side="top">
+                              <div className="w-[320px] rounded bg-white p-1 shadow-lg">
+                                <div>
+                                  <span className="font-medium italic">
+                                    f(x)
+                                  </span>
+                                  <span>
+                                    The formula used to populate the property
+                                  </span>
+                                </div>
+                                <textarea
+                                  className="block w-full rounded border-2 border-blue-500 p-1 font-mono outline-none"
+                                  defaultValue={`=MATCH_REGEX("FOO")`}
+                                />
+                                <div className="mt-2">
+                                  <div>
+                                    <input type="checkbox" checked={true} />{" "}
+                                    Display in document
+                                  </div>
+                                  <div>
+                                    Display:{" "}
+                                    <select>
+                                      <option>Gutter</option>
+                                      <option>Superscript</option>
+                                      <option>Inline</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </Popover.Content>
+                          </Popover.Root>
                         </div>
                       </th>
                     ))
